@@ -19,7 +19,7 @@
 #define MSG_REMOVE "Removing AppImage..."
 
 #define MSG_SUCCESS "Success!\n"
-#define MSG_INSTALL_INSTR "\nTo run the AppImage, use its alias as a command.\n"
+#define MSG_INSTALL_INSTR "\nTo run the AppImage, restart this terminal window, and use its alias as a command.\n"
 
 #define MSG_ERR_NEARGS "ERROR: Not enough arguments provided. See documentation for details.\n"
 #define MSG_ERRD_NULLARG "ERROR[Dev]: NULL Arguments passed to install or remove. This is a bug, and should be reported.\n"

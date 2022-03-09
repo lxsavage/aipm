@@ -16,8 +16,8 @@ cp ./bin/aipm ~/.local/aipm/aipm
 
 echo "$_aipm_init" > ~/.aipm_aliases.sh
 
-echo -e "\nsource ~/.aipm_aliases.sh\nalias aipm=\"~/.local/aipm/aipm;source ~/.aipm_aliases.sh\"\n" >> ~/.bashrc
-echo -e "source ~/.aipm_aliases.sh\nalias aipm=\"~/.local/aipm/aipm;source ~/.aipm_aliases.sh\"\n" >> ~/.zshrc
+echo -e "\nsource ~/.aipm_aliases.sh\nalias aipm=\"~/.local/aipm/aipm\"\n" >> ~/.bashrc
+echo -e "source ~/.aipm_aliases.sh\nalias aipm=\"~/.local/aipm/aipm\"\n" >> ~/.zshrc
 
 source ~/.aipm_aliases.sh
 
