@@ -14,7 +14,9 @@
 #include <string.h>
 
 #include "manager.h"
+#include "constants.h"
 #include "messages.h"
+#include "fshelpers.h"
 
 struct aipm_flags flags;
 char* path, *alias;
@@ -58,35 +60,59 @@ int modify()
 
 int main(int argc, char** argv)
 {
+    unsigned result = EXIT_FAILURE;
     printf(MSG_SPLASH);
 
     if (argc < 3)
     {
         printf(MSG_ERR_NEARGS);
-        return EXIT_FAILURE;
-    }
-
-    // Process arguments
-    char* mode = argv[1];
-
-    flags.update = strcmp(mode, "update") == 0;
-    flags.remove = strcmp(mode, "remove") == 0;
-
-    if (!flags.remove && argc < 4)
-    {
-        printf(MSG_ERR_NEARGS);
-        return EXIT_FAILURE;
-    }
-
-    if (flags.remove)
-    {
-        alias = argv[2];
     }
     else
     {
-        path = argv[2];
-        alias = argv[3];
+        // Process arguments
+        char* mode = argv[1];
+
+        if (strcmp(mode, "list") == 0)
+        {
+            char* hd = aipm_fs_homedir();
+            char* command = malloc((strlen(ALIASFILE) + strlen(hd) + 1) * sizeof(char));
+            strcpy(command, "ls ");
+            strcat(command, hd);
+            strcat(command, ALIASFILE);
+            system(command);
+            free(command);
+            result = EXIT_SUCCESS;
+        }
+        else
+        {
+            flags.update = strcmp(mode, "update") == 0;
+            flags.remove = strcmp(mode, "remove") == 0;
+
+            if (flags.update || flags.remove || strcmp(mode, "install") == 0)
+            {
+                if (!flags.remove && argc < 4)
+                {
+                    printf(MSG_ERR_NEARGS);
+                }
+
+                if (flags.remove)
+                {
+                    alias = argv[2];
+                }
+                else
+                {
+                    path = argv[2];
+                    alias = argv[3];
+                }
+                
+                result = modify();
+            }
+            else
+            {
+                printf(MSG_ERR_INVALIDCALL);
+            }
+        }
     }
-    
-    return modify();
+
+    return result;
 }

@@ -25,4 +25,6 @@
 #define MSG_ERRD_NULLARG "ERROR[Dev]: NULL Arguments passed to install or remove. This is a bug, and should be reported.\n"
 #define MSG_ERR_FAILMALLOC "ERROR: Failed to allocate memory. Try closing some programs and running again.\n"
 
+#define MSG_ERR_INVALIDCALL "ERROR: Invalid call. See documentation for available calls.\n"
+
 #endif
