@@ -12,7 +12,7 @@
 #ifndef CONSTANTS_H_INCLUDED
 #define CONSTANTS_H_INCLUDED
 
-#define INSTALLPATH "/.local/bin/"
+#define INSTALLPATH "/.local/aipm/bin/"
 #define ALIASFILE "/.aipm_aliases.sh"
 
 #endif

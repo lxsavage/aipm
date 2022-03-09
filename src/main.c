@@ -5,9 +5,9 @@
  * and removing AppImages in a way that behaves like any other package manager.
  * @version 0.1
  * @date 2022-03-08
- * 
+ *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See LICENSE.
- * 
+ *
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,7 +19,7 @@
 #include "fshelpers.h"
 
 struct aipm_flags flags;
-char* path, *alias;
+char *path, *alias;
 
 // TODO - Clean up
 int modify()
@@ -54,38 +54,34 @@ int modify()
         printf(MSG_INSTALL_INSTR);
     }
     system("sh ~/.aipm_aliases.sh");
-    
+
     return result;
 }
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     unsigned result = EXIT_FAILURE;
     printf(MSG_SPLASH);
 
-    if (argc < 3)
-    {
-        printf(MSG_ERR_NEARGS);
-    }
-    else
+    if (argc >= 2)
     {
         // Process arguments
-        char* mode = argv[1];
+        char *mode = argv[1];
 
         if (strcmp(mode, "list") == 0)
         {
-            char* hd = aipm_fs_homedir();
-            char* command = malloc((strlen(ALIASFILE) + strlen(hd) + 1) * sizeof(char));
+            char *hd = aipm_fs_homedir();
+            char *command = malloc((strlen(INSTALLPATH) + strlen(hd) + 4) * sizeof(char));
             strcpy(command, "ls ");
             strcat(command, hd);
-            strcat(command, ALIASFILE);
+            strcat(command, INSTALLPATH);
             system(command);
             free(command);
             result = EXIT_SUCCESS;
         }
-        else
+        else if (argc >= 3)
         {
-            flags.update = strcmp(mode, "update") == 0;
+            flags.update = strcmp(mode, "upgrade") == 0;
             flags.remove = strcmp(mode, "remove") == 0;
 
             if (flags.update || flags.remove || strcmp(mode, "install") == 0)
@@ -104,7 +100,7 @@ int main(int argc, char** argv)
                     path = argv[2];
                     alias = argv[3];
                 }
-                
+
                 result = modify();
             }
             else
@@ -112,6 +108,14 @@ int main(int argc, char** argv)
                 printf(MSG_ERR_INVALIDCALL);
             }
         }
+        else
+        {
+            printf(MSG_ERR_NEARGS);
+        }
+    }
+    else
+    {
+        printf(MSG_ERR_NEARGS);
     }
 
     return result;

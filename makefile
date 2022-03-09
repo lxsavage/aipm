@@ -15,18 +15,21 @@ LINKER_FLAGS =
 
 # Get a list of the source files, header files, and object files for the
 # compilation process
-SOURCES  := $(wildcard src/*.c) 
-HEADERS  := $(wildcard src/*.h)
-OBJECTS  := $(SOURCES:src/%.c=obj/%.o)
+SOURCES := $(wildcard src/*.c) 
+HEADERS := $(wildcard src/*.h)
+OBJECTS := $(SOURCES:src/%.c=obj/%.o)
 
 ###############################################################################
 
-all: link
+all: clean link
 
 # Link the object files into a binary
 link: $(OBJECTS)
 	if [ ! -d "bin" ]; then mkdir bin; fi
 	$(LINKER) $(LINKER_FLAGS) -o $(TARGET) $^
+
+clean:
+	rm -rf bin/ obj/
 
 # Generate object file
 obj/%.o: src/%.c
