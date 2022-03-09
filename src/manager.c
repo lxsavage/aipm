@@ -17,7 +17,6 @@
 #include "constants.h"
 #include "messages.h"
 
-/* Implementations */
 int aipm_install(char* path, char* alias)
 {
     char* hd = aipm_fs_homedir();
