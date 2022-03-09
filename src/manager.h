@@ -28,13 +28,22 @@ struct aipm_flags
 };
 
 /**
- * @brief Install or update an AppImage.
+ * @brief Install an AppImage.
  * 
  * @param path The path to the AppImage to install
  * @param alias The alias to set to the AppImage when installed
  * @return int The success result
  */
 int aipm_install(char* path, char* alias);
+
+/**
+ * @brief Update an AppImage.
+ * 
+ * @param path The path to the AppImage of the update
+ * @param alias The alias to update
+ * @return int The success result
+ */
+int aipm_update(char* path, char* alias);
 
 /**
  * @brief Remove and unalias an AppImage.

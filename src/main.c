@@ -22,7 +22,8 @@ char* path, *alias;
 // TODO - Clean up
 int modify()
 {
-    if (path == NULL || alias == NULL)
+    unsigned result = EXIT_FAILURE;
+    if (alias == NULL || (!flags.remove && path == NULL))
     {
         printf(MSG_ERRD_NULLARG);
         return EXIT_FAILURE;
@@ -30,11 +31,29 @@ int modify()
 
     if (flags.remove)
     {
-        return aipm_remove(alias);
+        // Remove
+        printf(MSG_REMOVE);
+        result = aipm_remove(alias);
+        printf(MSG_SUCCESS);
     }
-    aipm_install(path, alias);
+    else if (flags.update)
+    {
+        // Update
+        printf(MSG_UPDATE);
+        result = aipm_update(path, alias);
+        printf(MSG_SUCCESS);
+    }
+    else
+    {
+        // Install
+        printf(MSG_INSTALL);
+        result = aipm_install(path, alias);
+        printf(MSG_SUCCESS);
+        printf(MSG_INSTALL_INSTR);
+    }
     system("sh ~/.aipm_aliases.sh");
-    return EXIT_SUCCESS;
+    
+    return result;
 }
 
 int main(int argc, char** argv)
@@ -59,8 +78,15 @@ int main(int argc, char** argv)
         return EXIT_FAILURE;
     }
 
-    path = argv[2];
-    alias = argv[3];
-
+    if (flags.remove)
+    {
+        alias = argv[2];
+    }
+    else
+    {
+        path = argv[2];
+        alias = argv[3];
+    }
+    
     return modify();
 }
