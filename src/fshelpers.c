@@ -4,18 +4,19 @@
  * @brief Implementation for fshelpers.h
  * @version 0.1
  * @date 2022-03-08
- * 
- * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See LICENSE.
- * 
+ *
+ * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
+ * LICENSE.
+ *
  */
+#include <pwd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <pwd.h>
 
-#include "fshelpers.h"
 #include "constants.h"
+#include "fshelpers.h"
 #include "messages.h"
 
 char* aipm_fs_homedir()
@@ -51,15 +52,15 @@ int aipm_fs_rm(char* alias)
 {
     // TODO - Change to use dirent
     char* hd = aipm_fs_homedir();
-    char* path = malloc((strlen(alias) + strlen(hd) +
-        strlen(INSTALLPATH) + 1) * sizeof(char));
+    char* path = malloc((strlen(alias) + strlen(hd) + strlen(INSTALLPATH) + 1) *
+                        sizeof(char));
     strcpy(path, hd);
     strcat(path, INSTALLPATH);
     strcat(path, alias);
-    
+
     remove(path);
     free(path);
-    
+
     return EXIT_SUCCESS;
 }
 
@@ -72,8 +73,9 @@ int aipm_fs_alias(char* alias, char* execPath)
 
     // Command construction
     // TODO - Change to use dirent or stdio functions
-    char* command = malloc((strlen(aliases) + strlen(execPath) +
-        strlen(alias) + 17) * sizeof(char));
+    char* command =
+        malloc((strlen(aliases) + strlen(execPath) + strlen(alias) + 17) *
+               sizeof(char));
 
     strcpy(command, "echo \"alias ");
     strcat(command, alias);
@@ -121,7 +123,7 @@ int aipm_fs_unalias(char* alias)
     char* line = NULL;
     size_t len = 0;
     ssize_t read;
-    
+
     aliasf = fopen(aliases, "r");
     tempf = fopen(".aipm.tmp", "w");
     if (aliasf == NULL || tempf == NULL)
@@ -133,7 +135,7 @@ int aipm_fs_unalias(char* alias)
         free(tempf);
         return EXIT_FAILURE;
     }
-    
+
     // Write every line except for the line in question to the temp file
     while ((read = getline(&line, &len, aliasf)) != EOF)
     {
@@ -145,7 +147,7 @@ int aipm_fs_unalias(char* alias)
 
     // Close the initial file, free associated memory
     fclose(aliasf);
-    
+
     // Delete the initial file, rename the temp to the initial file
     remove(aliases);
     rename(".aipm.tmp", aliases);

@@ -15,7 +15,7 @@ LINKER_FLAGS =
 
 # Get a list of the source files, header files, and object files for the
 # compilation process
-SOURCES := $(wildcard src/*.c) 
+SOURCES := $(wildcard src/*.c)
 HEADERS := $(wildcard src/*.h)
 OBJECTS := $(SOURCES:src/%.c=obj/%.o)
 

@@ -6,59 +6,60 @@
  * @version 0.1
  * @date 2022-03-08
  *
- * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See LICENSE.
+ * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
+ * LICENSE.
  *
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "manager.h"
 #include "constants.h"
-#include "messages.h"
 #include "fshelpers.h"
+#include "manager.h"
+#include "messages.h"
 
 struct aipm_flags flags;
 char *path, *alias;
 
-// TODO - Clean up
 int modify()
 {
     unsigned result = EXIT_FAILURE;
-    if (alias == NULL || (!flags.remove && path == NULL))
+    if (alias != NULL && (flags.remove || path != NULL))
     {
-        printf(MSG_ERRD_NULLARG);
-        return EXIT_FAILURE;
-    }
+        if (flags.remove)
+        {
+            // Remove
+            printf(MSG_REMOVE);
+            result = aipm_remove(alias);
+            printf(MSG_SUCCESS);
+        }
+        else if (flags.update)
+        {
+            // Update
+            printf(MSG_UPDATE);
+            result = aipm_update(path, alias);
+            printf(MSG_SUCCESS);
+        }
+        else
+        {
+            // Install
+            printf(MSG_INSTALL);
+            result = aipm_install(path, alias);
+            printf(MSG_SUCCESS);
+            printf(MSG_INSTALL_INSTR);
+        }
 
-    if (flags.remove)
-    {
-        // Remove
-        printf(MSG_REMOVE);
-        result = aipm_remove(alias);
-        printf(MSG_SUCCESS);
-    }
-    else if (flags.update)
-    {
-        // Update
-        printf(MSG_UPDATE);
-        result = aipm_update(path, alias);
-        printf(MSG_SUCCESS);
+        system("sh ~/.aipm_aliases.sh");
     }
     else
     {
-        // Install
-        printf(MSG_INSTALL);
-        result = aipm_install(path, alias);
-        printf(MSG_SUCCESS);
-        printf(MSG_INSTALL_INSTR);
+        printf(MSG_ERRD_NULLARG);
     }
-    system("sh ~/.aipm_aliases.sh");
-
     return result;
 }
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     unsigned result = EXIT_FAILURE;
     printf(MSG_SPLASH);
@@ -66,12 +67,13 @@ int main(int argc, char **argv)
     if (argc >= 2)
     {
         // Process arguments
-        char *mode = argv[1];
+        char* mode = argv[1];
 
         if (strcmp(mode, "list") == 0)
         {
-            char *hd = aipm_fs_homedir();
-            char *command = malloc((strlen(INSTALLPATH) + strlen(hd) + 4) * sizeof(char));
+            char* hd = aipm_fs_homedir();
+            char* command =
+                malloc((strlen(INSTALLPATH) + strlen(hd) + 4) * sizeof(char));
             strcpy(command, "ls ");
             strcat(command, hd);
             strcat(command, INSTALLPATH);
