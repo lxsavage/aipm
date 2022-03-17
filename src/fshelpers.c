@@ -15,8 +15,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 #include "constants.h"
 #include "fshelpers.h"
@@ -30,7 +30,6 @@ char* aipm_fs_homedir()
     return homedir;
 }
 
-// TODO - Figure out a faster way to implement this
 int aipm_fs_cp(char* src, char* dest)
 {
     FILE* srcf = fopen(src, "rb");
