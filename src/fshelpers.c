@@ -71,22 +71,23 @@ int aipm_fs_alias(char* alias, char* execPath)
     strcpy(aliases, hd);
     strcat(aliases, ALIASFILE);
 
-    // Command construction
-    // TODO - Change to use dirent or stdio functions
-    char* command =
-        malloc((strlen(aliases) + strlen(execPath) + strlen(alias) + 17) *
-               sizeof(char));
+    // alias <alias>=<execPath>
+    char* newAlias =
+        malloc((10 + strlen(alias) + strlen(execPath)) * sizeof(char));
+    strcpy(newAlias, "\nalias ");
+    strcat(newAlias, alias);
+    strcat(newAlias, "=");
+    strcat(newAlias, execPath);
+    strcat(newAlias, "\n");
 
-    strcpy(command, "echo \"alias ");
-    strcat(command, alias);
-    strcat(command, "=");
-    strcat(command, execPath);
-    strcat(command, "\">>");
-    strcat(command, aliases);
+    // Append the alias to the aliases file
+    FILE* aliasf = fopen(aliases, "a");
+
+    fprintf(aliasf, newAlias);
+    free(newAlias);
+
+    fclose(aliasf);
     free(aliases);
-
-    system(command);
-    free(command);
 
     return EXIT_SUCCESS;
 }
