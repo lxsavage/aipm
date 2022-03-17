@@ -20,6 +20,9 @@
 #define MSG_UPDATE "Updating AppImage..."
 #define MSG_REMOVE "Removing AppImage..."
 
+#define MSG_ERR_PERMNOREAD                                                     \
+    "ERROR: Read permissions required to install AppImage.\n"
+
 #define MSG_SUCCESS "Success!\n"
 #define MSG_INSTALL_INSTR                                                      \
     "\nTo run the AppImage, restart this terminal window, and use its alias "  \

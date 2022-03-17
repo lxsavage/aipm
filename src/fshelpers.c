@@ -9,11 +9,14 @@
  * LICENSE.
  *
  */
+#define POSIX_SOURCE
+
 #include <pwd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 #include "constants.h"
 #include "fshelpers.h"
@@ -27,30 +30,32 @@ char* aipm_fs_homedir()
     return homedir;
 }
 
+// TODO - Figure out a faster way to implement this
 int aipm_fs_cp(char* src, char* dest)
 {
-    // TODO - Change to use dirent
-    char* command = malloc((strlen(src) + 10) * sizeof(char));
-    strcpy(command, "chmod +x ");
-    strcat(command, src);
-    system(command);
+    FILE* srcf = fopen(src, "rb");
+    if (srcf == NULL)
+    {
+        printf(MSG_ERR_PERMNOREAD);
+        return EXIT_FAILURE;
+    }
+    FILE* destf = fopen(dest, "wb");
 
-    // TODO - Change to use dirent
-    command = realloc(command, (6 + strlen(src) + strlen(dest)) * sizeof(char));
-    strcpy(command, "cp ");
-    strcat(command, src);
-    strcat(command, " ");
-    strcat(command, dest);
-    system(command);
+    int curr = fgetc(srcf);
+    while (curr != EOF)
+    {
+        fputc(curr, destf);
+        curr = fgetc(srcf);
+    }
 
-    free(command);
-
+    fclose(srcf);
+    fclose(destf);
+    chmod(dest, S_IRUSR | S_IXUSR);
     return EXIT_SUCCESS;
 }
 
 int aipm_fs_rm(char* alias)
 {
-    // TODO - Change to use dirent
     char* hd = aipm_fs_homedir();
     char* path = malloc((strlen(alias) + strlen(hd) + strlen(INSTALLPATH) + 1) *
                         sizeof(char));
@@ -95,7 +100,6 @@ int aipm_fs_alias(char* alias, char* execPath)
 int aipm_fs_unalias(char* alias)
 {
     // Unalias
-    // TODO - Change to use dirent or stdio functions
     char* command = malloc((strlen(alias) + 12) * sizeof(char));
     strcpy(command, "unalias -a ");
     strcat(command, alias);
