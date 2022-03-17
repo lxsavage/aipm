@@ -25,12 +25,12 @@ char *path, *alias;
 void printHelpMsg()
 {
     printf(MSG_SPLASH);
-    printf("install <1> <2>\tInstall AppImage at path <1>, set its alias to "
+    printf("\ninstall <1> <2>\tInstall AppImage at path <1>, set its alias to "
            "<2>\n");
     printf("remove <1>\tRemove AppImage installation with alias of <2>\n");
     printf("update <1> <2>\tUpdate alias <2> with a new AppImage file (for "
            "updating)\n");
-    printf("\nhelp\tDisplay this help message\n");
+    printf("\nhelp\t\tDisplay this help message\n");
 }
 
 int modify()
