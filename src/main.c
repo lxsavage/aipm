@@ -117,7 +117,6 @@ int main(int argc, char** argv)
     }
     else
     {
-        printf("a");
         printf(MSG_ERR_NEARGS);
     }
 

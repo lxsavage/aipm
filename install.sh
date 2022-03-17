@@ -5,19 +5,24 @@ _aipm_init="#!/bin/sh
 
 echo "Installing aipm to ~/.local/aipm/aipm; aliasing as aipm"
 
+if [ ! -d src ]; then
+    echo "Make sure that you are cd'd into the aipm directory"
+    exit
+fi
+
 if [ ! -d ~/.local ]; then mkdir ~/.local; fi
 
 if [ ! -d ~/.local/aipm ]; then mkdir ~/.local/aipm; fi
 if [ ! -d ~/.local/aipm/bin ]; then mkdir ~/.local/aipm/bin; fi
 
-cd $(dirname "${BASH_SOURCE[0]}")
+#cd $(dirname "${BASH_SOURCE[0]}")
 make
 cp ./bin/aipm ~/.local/aipm/aipm
 
 echo "$_aipm_init" > ~/.aipm_aliases.sh
 
-echo -e "\nsource ~/.aipm_aliases.sh\nalias aipm=\"~/.local/aipm/aipm\"\n" >> ~/.bashrc
-echo -e "source ~/.aipm_aliases.sh\nalias aipm=\"~/.local/aipm/aipm\"\n" >> ~/.zshrc
+echo "\nsource ~/.aipm_aliases.sh\nalias aipm=\"~/.local/aipm/aipm\"\n" >> ~/.bashrc
+echo "\nsource ~/.aipm_aliases.sh\nalias aipm=\"~/.local/aipm/aipm\"\n" >> ~/.zshrc
 
 source ~/.aipm_aliases.sh
 

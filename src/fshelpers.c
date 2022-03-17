@@ -83,7 +83,7 @@ int aipm_fs_alias(char* alias, char* execPath)
     // Append the alias to the aliases file
     FILE* aliasf = fopen(aliases, "a");
 
-    fprintf(aliasf, newAlias);
+    fprintf(aliasf, "%s", newAlias);
     free(newAlias);
 
     fclose(aliasf);
