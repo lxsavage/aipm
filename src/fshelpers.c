@@ -9,7 +9,7 @@
  * LICENSE.
  *
  */
-#define _POSIX_C_SOURCE 199506L
+#define _POSIX_C_SOURCE 200809L
 
 #include <pwd.h>
 #include <stdio.h>
