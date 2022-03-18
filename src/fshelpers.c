@@ -2,14 +2,14 @@
  * @file fshelpers.c
  * @author Logan Savage
  * @brief Implementation for fshelpers.h
- * @version 0.1
+ * @version 0.2.2
  * @date 2022-03-08
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.
  *
  */
-#define POSIX_SOURCE
+#define _POSIX_C_SOURCE 199506L
 
 #include <pwd.h>
 #include <stdio.h>

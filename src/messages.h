@@ -3,7 +3,7 @@
  * @author Logan Savage
  * @brief A basic header storing all user-displayed messages, included for
  * potential localization in the future.
- * @version 0.1
+ * @version 0.2.2
  * @date 2022-03-08
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
