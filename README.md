@@ -5,6 +5,12 @@ A basic package manager written to install/remove AppImages to be launched from 
 
 ###### NOTE: This tool is incomplete, and may face stability issues
 
+In order to build this program, the following is required to be installed:
+
+- make
+- gcc
+- sudo (for you Arch users)
+
 1. Clone repo, extract zip
 2. `cd` into the root of the repo.
 3. Run `sh ./install.sh`
@@ -20,9 +26,8 @@ A basic package manager written to install/remove AppImages to be launched from 
 ## Uninstallation
 
 1. Repeat similar steps to installation, except run `sh ./uninstall.sh`
-2. Remove `source ~/.aipm_aliases.sh` from both your .zshrc and bashrc files
-3. Find the AppImages that were installed in `~/Documents/AIPM_Images`
+2. Find the AppImages that were installed in `~/Documents/AIPM_Images`
 
 ## How it works
 
-The manager works based primarily upon aliases (which means it requires these to be existent on the shell that it is installed on), where it will install by moving AppImages into its own bin folder (`~/.local/aipm/bin`), then creating an alias in a shell file (`~/.aipm_aliases.sh`). The installation process currently sources this file in both the current user's `.zshrc` and `.bashrc` files, but won't be removed with the uninstallation script, so these lines must be removed manually in this case.
+The manager creates a folder that is added to the path as ~/.local/aipm/bin, where each app image will be moved to. From here (due to it being a part of PATH) these AppImages can be executed as any other executable. 

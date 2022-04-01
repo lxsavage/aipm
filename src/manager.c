@@ -2,8 +2,8 @@
  * @file manager.c
  * @author Logan Savage
  * @brief Implementation for manager.h
- * @version 0.2.2
- * @date 2022-03-08
+ * @version 0.3.0
+ * @date 2022-03-31
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.
@@ -29,7 +29,6 @@ int aipm_install(char* path, char* alias)
     strcat(destination, alias);
 
     aipm_fs_cp(path, destination);
-    aipm_fs_alias(alias, destination);
 
     free(destination);
     return EXIT_SUCCESS;
@@ -54,8 +53,6 @@ int aipm_update(char* path, char* alias)
 
 int aipm_remove(char* alias)
 {
-    aipm_fs_unalias(alias);
     aipm_fs_rm(alias);
-
     return EXIT_SUCCESS;
 }
