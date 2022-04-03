@@ -6,8 +6,8 @@
 TARGET := bin/aipm
 
 # Compiler
-CC       = gcc
-CC_FLAGS = -pedantic -Wimplicit-function-declaration -Wreturn-type -g -c
+CC			= gcc
+CC_FLAGS 	= -pedantic -Wimplicit-function-declaration -Wreturn-type -O2 -c
 
 # Linker
 LINKER		 = gcc
@@ -21,12 +21,13 @@ OBJECTS := $(SOURCES:src/%.c=obj/%.o)
 
 ###############################################################################
 
-all: clean link
+all: link
 
 # Link the object files into a binary
 link: $(OBJECTS)
 	if [ ! -d "bin" ]; then mkdir bin; fi
 	$(LINKER) $(LINKER_FLAGS) -o $(TARGET) $^
+
 
 clean:
 	rm -rf bin/ obj/
@@ -34,4 +35,4 @@ clean:
 # Generate object file
 obj/%.o: src/%.c
 	if [ ! -d "obj" ]; then mkdir obj; fi
-	$(CC) $(CC_FLAGS) -o $@ $<
+	$(CC) $(CC_FLAGS) $(CC_FLAGS_RELEASE) -o $@ $<

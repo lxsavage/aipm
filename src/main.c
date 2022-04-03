@@ -42,7 +42,7 @@ struct aipm_flags processFlags(char* mode)
     return flags;
 }
 
-int list()
+void list()
 {
     char* hd = aipm_fs_homedir();
     char* command =
@@ -52,7 +52,6 @@ int list()
     strcat(command, INSTALLPATH);
     system(command);
     free(command);
-    return EXIT_SUCCESS;
 }
 
 int modify(struct aipm_flags flags, char* path, char* alias)
@@ -102,7 +101,11 @@ int main(int argc, char** argv)
     {
         struct aipm_flags flags = processFlags(argv[1]);
 
-        if (flags.list) list();
+        if (flags.list)
+        {
+            list();
+            result = EXIT_SUCCESS;
+        }
         else if (argc >= 3)
         {
             if (flags.update || flags.remove || flags.install)
