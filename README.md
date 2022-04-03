@@ -1,9 +1,7 @@
 # aipm
-A basic package manager written to install/remove AppImages to be launched from the command line.
+A basic package manager written to install/remove AppImages. These images are installed with a name which can be accessed from the command line.
 
 ## Installation
-
-###### NOTE: This tool is incomplete, and may face stability issues
 
 In order to build this program, the following is required to be installed:
 
@@ -29,4 +27,4 @@ In order to build this program, the following is required to be installed:
 
 ## How it works
 
-The manager creates a folder that is added to the path as ~/.local/aipm/bin, where each app image will be moved to. From here (due to it being a part of PATH) these AppImages can be executed as any other executable. 
+The manager creates a folder that is added to the path as ~/.local/aipm/bin, where each app image will be moved to. From here (due to it being a part of PATH) these AppImages can be executed as any other executable.
