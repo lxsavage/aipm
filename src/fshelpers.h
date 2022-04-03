@@ -2,8 +2,6 @@
  * @file fshelpers.h
  * @author Logan Savage
  * @brief Various helpers for filesystem actions, to be used within manager.
- * @version 0.3.0
- * @date 2022-04-03
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.

@@ -3,11 +3,8 @@
 #
 # update.sh
 #
-# To use this script, ensure that an instance of aipm is already installed
-# (using it without one will mess up a potential future install, and can be
-# tested by simply running `aipm` in a newly-opened terminal), then cd into
-# the directory this file is contained in, then run it through
-# `sh ./update.sh`.
+# To use this script, cd into the directory this file is contained
+# in, then run it through `sh ./update.sh`.
 #
 # Author: Logan Savage
 # Version 0.3.0

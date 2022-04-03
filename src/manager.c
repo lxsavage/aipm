@@ -2,8 +2,6 @@
  * @file manager.c
  * @author Logan Savage
  * @brief Implementation for manager.h
- * @version 0.3.0
- * @date 2022-03-31
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.

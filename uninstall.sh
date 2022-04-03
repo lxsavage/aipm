@@ -17,10 +17,20 @@ if [ ! -d src ]; then
     exit
 fi
 
-cp ~/.local/aipm/bin ~/Documents/AIPM_Images
-rm -rf ~/.local/aipm
+# Remove symlink
 sudo rm -rf /usr/bin/aipm
 
+# Remove image directory, store recovered images in Documents
+cp ~/.local/aipm/bin ~/Documents/AIPM_Images
+
+# Remove executable
+rm -rf ~/.local/aipm
+
+# Remove manpage
+sudo rm -rf /usr/local/share/man/man1/aipm.1.*
+sudo mandb
+
+# Success message
 echo "Uninstallation complete!"
 echo "Final step: Remove export PATH lines for ~/.local/aipm/bin from your .zshrc and .bashrc files."
 echo "All of the installed AppImages were placed in the folder ~/Documents/AIPM_Images."

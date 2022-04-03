@@ -2,8 +2,6 @@
  * @file fshelpers.c
  * @author Logan Savage
  * @brief Implementation for fshelpers.h
- * @version 0.3.0
- * @date 2022-04-03
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.

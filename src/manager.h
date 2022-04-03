@@ -2,8 +2,6 @@
  * @file manager.h
  * @author Logan Savage
  * @brief The main manager portion of the program.
- * @version 0.1
- * @date 2022-04-03
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.

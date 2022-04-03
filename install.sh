@@ -3,14 +3,10 @@
 #
 # install.sh
 #
-# To use this script, ensure that no instance of aipm is installed, and if
-# there was one installed in the past, make sure all traces of it have been
-# removed. After this, cd into the directory that this file is contained in,
+# To use this script, cd into the directory that this file is contained in,
 # then run this file with `sh ./install.sh`.
 #
 # Author: Logan Savage
-# Version 0.3.0
-# Date: 2022-04-03
 # Copyright (c) 2022 Logan Savage. Some Rights Reserved. See LICENSE.
 #
 
@@ -38,6 +34,15 @@ cp ./bin/aipm ~/.local/aipm/aipm
 
 # Symlink
 sudo ln -s ~/.local/aipm/aipm /usr/bin/aipm
+
+# Install manpage
+if [ ! -d /usr/local/share/man/man1 ]; then
+    sudo mkdir /usr/local/share/man/man1
+fi
+
+sudo cp doc/aipm.1 /usr/local/share/man/man1/aipm.1
+sudo gzip /usr/local/share/man/man1/aipm.1
+sudo mandb
 
 # Add ~/.local/aipm/bin to PATH
 echo $NEWPATH >> ~/.bashrc

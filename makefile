@@ -28,7 +28,7 @@ link: $(OBJECTS)
 	if [ ! -d "bin" ]; then mkdir bin; fi
 	$(LINKER) $(LINKER_FLAGS) -o $(TARGET) $^
 
-
+# Clear out all building files and binaries
 clean:
 	rm -rf bin/ obj/
 

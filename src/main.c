@@ -3,8 +3,6 @@
  * @author Logan Savage
  * @brief AIPM is a basic portable package manager for installing, updating,
  * and removing AppImages in a way that behaves like any other package manager.
- * @version 0.3.0
- * @date 2022-03-31
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.
