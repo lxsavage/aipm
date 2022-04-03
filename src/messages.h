@@ -3,8 +3,8 @@
  * @author Logan Savage
  * @brief A basic header storing all user-displayed messages, included for
  * potential localization in the future.
- * @version 0.2.2
- * @date 2022-03-08
+ * @version 0.3.0
+ * @date 2022-04-03
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.
@@ -14,7 +14,7 @@
 #define MESSAGES_H_INCLUDED
 
 #define MSG_SPLASH                                                             \
-    "AIPM: AppImage Package Manager v0.2.2\nCreated by Logan Savage\n"
+    "AIPM: AppImage Package Manager v0.3.0\nCreated by Logan Savage\n"
 
 #define MSG_INSTALL "Installing AppImage..."
 #define MSG_UPDATE "Updating AppImage..."
@@ -24,9 +24,6 @@
     "ERROR: Read permissions required to install AppImage.\n"
 
 #define MSG_SUCCESS "Success!\n"
-#define MSG_INSTALL_INSTR                                                      \
-    "\nTo run the AppImage, restart this terminal window, and use its alias "  \
-    "as a command.\n"
 
 #define MSG_ERR_NEARGS                                                         \
     "ERROR: Not enough arguments provided. See documentation for details.\n"

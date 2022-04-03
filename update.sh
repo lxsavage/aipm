@@ -10,10 +10,15 @@
 # `sh ./update.sh`.
 #
 # Author: Logan Savage
-# Version 0.2.2
+# Version 0.3.0
 # Date: 2022-03-08
 # Copyright (c) 2022 Logan Savage. Some Rights Reserved. See LICENSE.
 #
+
+if ! command -v aipm; then
+    sh install.sh
+    exit 1
+fi
 
 if [ ! -d src ]; then
     echo "Make sure that you are cd'd into the aipm directory"
@@ -23,7 +28,6 @@ fi
 echo "Updating..."
 
 make
-rm ~/local/aipm/aipm
-mv ./bin/aipm ~/.local/aipm/aipm
+mv -f ./bin/aipm ~/.local/aipm/aipm
 
 echo "Done!"

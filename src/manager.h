@@ -3,7 +3,7 @@
  * @author Logan Savage
  * @brief The main manager portion of the program.
  * @version 0.1
- * @date 2022-03-08
+ * @date 2022-04-03
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.
@@ -17,15 +17,17 @@
  *
  * If remove is set to 1, uninstall.
  *
- * If remove is set to 0, update set to 0, install.
+ * If remove is set to 0, install set to 1, install.
  *
  * If remove is set to 0, update set to 1, update.
  *
  */
 struct aipm_flags
 {
-    unsigned update : 1;
-    unsigned remove : 1;
+    unsigned update  : 1;
+    unsigned install : 1;
+    unsigned remove  : 1;
+    unsigned list    : 1;
 };
 
 /**

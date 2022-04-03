@@ -9,6 +9,7 @@
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.
  *
+ * @TODO - Implement the CLI aspect more cleanly in this file
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,9 +19,6 @@
 #include "fshelpers.h"
 #include "manager.h"
 #include "messages.h"
-
-struct aipm_flags flags;
-char *path, *alias;
 
 void printHelpMsg()
 {
@@ -33,7 +31,31 @@ void printHelpMsg()
     printf("\nhelp\t\tDisplay this help message\n");
 }
 
-int modify()
+struct aipm_flags processFlags(char* mode)
+{
+    struct aipm_flags flags;
+    flags.list = strcmp(mode, "list") == 0;
+    flags.remove = strcmp(mode, "remove") == 0;
+    flags.install = strcmp(mode, "install") == 0;
+    flags.update = strcmp(mode, "upgrade") == 0;
+
+    return flags;
+}
+
+int list()
+{
+    char* hd = aipm_fs_homedir();
+    char* command =
+        malloc((strlen(INSTALLPATH) + strlen(hd) + 4) * sizeof(char));
+    strcpy(command, "ls ");
+    strcat(command, hd);
+    strcat(command, INSTALLPATH);
+    system(command);
+    free(command);
+    return EXIT_SUCCESS;
+}
+
+int modify(struct aipm_flags flags, char* path, char* alias)
 {
     unsigned result = EXIT_FAILURE;
     if (alias != NULL && (flags.remove || path != NULL))
@@ -52,13 +74,16 @@ int modify()
             result = aipm_update(path, alias);
             printf(MSG_SUCCESS);
         }
-        else
+        else if (flags.install)
         {
             // Install
             printf(MSG_INSTALL);
             result = aipm_install(path, alias);
             printf(MSG_SUCCESS);
-            printf(MSG_INSTALL_INSTR);
+        }
+        else
+        {
+            printHelpMsg();
         }
     }
     else
@@ -70,31 +95,17 @@ int modify()
 
 int main(int argc, char** argv)
 {
+    char *path, *alias;
     unsigned result = EXIT_FAILURE;
 
     if (argc >= 2)
     {
-        // Process arguments
-        char* mode = argv[1];
+        struct aipm_flags flags = processFlags(argv[1]);
 
-        if (strcmp(mode, "list") == 0)
-        {
-            char* hd = aipm_fs_homedir();
-            char* command =
-                malloc((strlen(INSTALLPATH) + strlen(hd) + 4) * sizeof(char));
-            strcpy(command, "ls ");
-            strcat(command, hd);
-            strcat(command, INSTALLPATH);
-            system(command);
-            free(command);
-            result = EXIT_SUCCESS;
-        }
+        if (flags.list) list();
         else if (argc >= 3)
         {
-            flags.update = strcmp(mode, "upgrade") == 0;
-            flags.remove = strcmp(mode, "remove") == 0;
-
-            if (flags.update || flags.remove || strcmp(mode, "install") == 0)
+            if (flags.update || flags.remove || flags.install)
             {
                 if (!flags.remove && argc < 4)
                 {
@@ -110,12 +121,15 @@ int main(int argc, char** argv)
                     path = argv[2];
                     alias = argv[3];
                 }
+            }
 
-                result = modify();
+            if (alias != NULL && (flags.remove || path != NULL))
+            {
+                result = modify(flags, path, alias);
             }
             else
             {
-                printf(MSG_ERR_INVALIDCALL);
+                printHelpMsg();
             }
         }
         else

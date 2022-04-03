@@ -14,19 +14,18 @@ In order to build this program, the following is required to be installed:
 1. Clone repo, extract zip
 2. `cd` into the root of the repo.
 3. Run `sh ./install.sh`
-   - Note that if aipm is installed already, running this will add duplicate source entries to your `.bashrc` and `.zshrc` files, and attempt to reinitialize your `.aipm_aliases.sh` file.
 
 ## Updating
 
 1. Clone new version repo
 2. cd into the root of the new repo.
 3. Run `sh ./update.sh`
-   - Note that this script will mess up if aipm isn't already installed
 
 ## Uninstallation
 
 1. Repeat similar steps to installation, except run `sh ./uninstall.sh`
-2. Find the AppImages that were installed in `~/Documents/AIPM_Images`
+2. Remove the `~/.local/aipm/bin` folder from `PATH` (should be explicit lines in `.zshrc` and `.bashrc` that can be removed for this that are added with the installer)
+3. Find the AppImages that were installed in `~/Documents/AIPM_Images`
 
 ## How it works
 

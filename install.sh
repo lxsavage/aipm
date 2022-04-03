@@ -9,16 +9,22 @@
 # then run this file with `sh ./install.sh`.
 #
 # Author: Logan Savage
-# Version 0.2.2
-# Date: 2022-03-08
+# Version 0.3.0
+# Date: 2022-04-03
 # Copyright (c) 2022 Logan Savage. Some Rights Reserved. See LICENSE.
 #
+
+if command -v aipm; then
+    sh update.sh
+    exit 1
+fi
+
 NEWPATH='export PATH="$PATH:$HOME/.local/aipm/bin"'
 echo "Installing aipm to ~/.local/aipm/aipm; symlinking to /usr/bin/aipm"
 
 if [ ! -d src ]; then
     echo "Make sure that you are cd'd into the aipm directory"
-    exit
+    exit 1
 fi
 
 # Create required directories
@@ -37,4 +43,4 @@ sudo ln -s ~/.local/aipm/aipm /usr/bin/aipm
 echo $NEWPATH >> ~/.bashrc
 echo $NEWPATH >> ~/.zshrc
 
-echo "Done! Invoke with aipm"
+echo "Done! Invoke with aipm."

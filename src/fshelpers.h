@@ -2,8 +2,8 @@
  * @file fshelpers.h
  * @author Logan Savage
  * @brief Various helpers for filesystem actions, to be used within manager.
- * @version 0.2.1
- * @date 2022-03-08
+ * @version 0.3.0
+ * @date 2022-04-03
  *
  * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
  * LICENSE.
@@ -36,22 +36,5 @@ int aipm_fs_cp(char* src, char* dest);
  * @return int The success result
  */
 int aipm_fs_rm(char* alias);
-
-/**
- * @brief Create an alias to a newly-installed AppImage
- *
- * @param alias The alias to assign
- * @param execPath The path to the installed AppImage
- * @return int The success result
- */
-int aipm_fs_alias(char* alias, char* execPath);
-
-/**
- * @brief Remove the specified alias from a recently-deleted AppImage
- *
- * @param alias The alias to remove
- * @return int The success result
- */
-int aipm_fs_unalias(char* alias);
 
 #endif
