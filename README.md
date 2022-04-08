@@ -3,7 +3,7 @@ A basic package manager written to install/remove AppImages. These images are in
 
 ## Installation
 
-In order to build this program, the following is required to be installed:
+In order to build this program, the following programs are required to be installed:
 
 - make
 - gcc
