@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#
+# 
 # install.sh
 #
 # To use this script, cd into the directory that this file is contained in,
