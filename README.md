@@ -7,7 +7,6 @@ In order to build this program, the following is required to be installed:
 
 - make
 - gcc
-- sudo (for you Arch users)
 
 1. Clone repo, extract zip
 2. `cd` into the root of the repo.
