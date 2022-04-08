@@ -33,6 +33,7 @@ struct aipm_flags processFlags(char* mode)
 {
     struct aipm_flags flags;
     flags.list = strcmp(mode, "list") == 0;
+    flags.version = strcmp(mode, "--version") == 0 || strcmp(mode, "-v") == 0;
     flags.remove = strcmp(mode, "remove") == 0;
     flags.install = strcmp(mode, "install") == 0;
     flags.update = strcmp(mode, "upgrade") == 0;

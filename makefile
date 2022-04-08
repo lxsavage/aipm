@@ -3,6 +3,9 @@
 # Author: Logan Savage
 # Copyright (c) 2022 Logan Savage. Some Rights Reserved. See LICENSE.
 
+###############################################################################
+
+# Name of the outputted binary
 TARGET := bin/aipm
 
 # Compiler
@@ -21,10 +24,14 @@ OBJECTS := $(SOURCES:src/%.c=obj/%.o)
 
 ###############################################################################
 
-all: link
+# Build the project for installation by default
+all: build
+
+# Rebuild the project
+rebuild: clean build
 
 # Link the object files into a binary
-link: $(OBJECTS)
+build: $(OBJECTS)
 	if [ ! -d "bin" ]; then mkdir bin; fi
 	$(LINKER) $(LINKER_FLAGS) -o $(TARGET) $^
 

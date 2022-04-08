@@ -26,6 +26,7 @@ struct aipm_flags
     unsigned install : 1;
     unsigned remove  : 1;
     unsigned list    : 1;
+    unsigned version : 1;
 };
 
 /**
