@@ -18,7 +18,7 @@ In order to build this program, the following programs are required to be instal
 
 1. Clone new version repo
 2. cd into the root of the new repo.
-3. Run `sh ./update.sh`
+3. Run `sh ./upgrade.sh`
 
 ## Uninstallation
 
