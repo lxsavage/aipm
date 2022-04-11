@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 .vscode/
-
+.DS_Store
 # Compilation
 bin/
 obj/
