@@ -27,7 +27,7 @@ cp ~/.local/aipm/bin ~/Documents/AIPM_Images
 rm -rf ~/.local/aipm
 
 # Remove manpage
-sudo rm -rf /usr/local/share/man/man1/aipm.1.*
+sudo rm -rf /usr/local/share/man/man1/aipm.*
 sudo mandb
 
 # Success message

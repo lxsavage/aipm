@@ -3,9 +3,6 @@
  * @author Logan Savage
  * @brief The main manager portion of the program.
  *
- * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
- * LICENSE.
- *
  */
 #ifndef MANAGER_H_INCLUDED
 #define MANAGER_H_INCLUDED

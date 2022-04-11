@@ -4,15 +4,12 @@
  * @brief A basic header storing all user-displayed messages, included for
  * potential localization in the future.
  *
- * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
- * LICENSE.
- *
  */
 #ifndef MESSAGES_H_INCLUDED
 #define MESSAGES_H_INCLUDED
 
 #define MSG_SPLASH                                                             \
-    "AIPM: AppImage Package Manager v0.3.0\nCreated by Logan Savage\n"
+    "AIPM: AppImage Package Manager v0.3.1\nCreated by Logan Savage\n"
 
 #define MSG_INSTALL "Installing AppImage..."
 #define MSG_UPDATE "Updating AppImage..."

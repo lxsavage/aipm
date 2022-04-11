@@ -3,9 +3,6 @@
  * @author Logan Savage
  * @brief Implementation for manager.h
  *
- * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
- * LICENSE.
- *
  */
 #include <stdio.h>
 #include <stdlib.h>

@@ -4,9 +4,6 @@
  * @brief AIPM is a basic portable package manager for installing, updating,
  * and removing AppImages in a way that behaves like any other package manager.
  *
- * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
- * LICENSE.
- *
  * @TODO - Implement the CLI aspect more cleanly in this file
  */
 #include <stdio.h>
@@ -36,7 +33,7 @@ struct aipm_flags processFlags(char* mode)
     flags.version = strcmp(mode, "--version") == 0 || strcmp(mode, "-v") == 0;
     flags.remove = strcmp(mode, "remove") == 0;
     flags.install = strcmp(mode, "install") == 0;
-    flags.update = strcmp(mode, "upgrade") == 0;
+    flags.update = strcmp(mode, "update") == 0;
 
     return flags;
 }

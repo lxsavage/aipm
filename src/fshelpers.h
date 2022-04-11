@@ -3,9 +3,6 @@
  * @author Logan Savage
  * @brief Various helpers for filesystem actions, to be used within manager.
  *
- * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
- * LICENSE.
- *
  */
 #ifndef FSHELPERS_H_INCLUDED
 #define FSHELPERS_H_INCLUDED

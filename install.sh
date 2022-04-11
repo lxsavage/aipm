@@ -4,14 +4,14 @@
 # install.sh
 #
 # To use this script, cd into the directory that this file is contained in,
-# then run this file with `sh ./install.sh`.
+# then run this file with `./install.sh`.
 #
 # Author: Logan Savage
 # Copyright (c) 2022 Logan Savage. Some Rights Reserved. See LICENSE.
 #
 
 if command -v aipm; then
-    sh update.sh
+    sh upgrade.sh
     exit 1
 fi
 
@@ -40,7 +40,7 @@ if [ ! -d /usr/local/share/man/man1 ]; then
     sudo mkdir /usr/local/share/man/man1
 fi
 
-sudo cp doc/aipm.1 /usr/local/share/man/man1/aipm.1
+sudo cp doc/aipm.manpage /usr/local/share/man/man1/aipm.1
 sudo gzip /usr/local/share/man/man1/aipm.1
 sudo mandb
 

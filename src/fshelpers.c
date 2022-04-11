@@ -3,9 +3,6 @@
  * @author Logan Savage
  * @brief Implementation for fshelpers.h
  *
- * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
- * LICENSE.
- *
  */
 #define _POSIX_C_SOURCE 200809L
 

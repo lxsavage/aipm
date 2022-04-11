@@ -5,9 +5,6 @@
  * the way that arguments are processed, "/dir" here translates to "~/dir" in
  * the program.
  *
- * @copyright Copyright (c) 2022 Logan Savage. Some Rights Reserved. See
- * LICENSE.
- *
  */
 #ifndef CONSTANTS_H_INCLUDED
 #define CONSTANTS_H_INCLUDED
