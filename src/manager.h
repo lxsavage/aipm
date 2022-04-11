@@ -24,6 +24,7 @@ struct aipm_flags
     unsigned remove  : 1;
     unsigned list    : 1;
     unsigned version : 1;
+    unsigned upgrade : 1;
 };
 
 /**
@@ -51,5 +52,12 @@ int aipm_update(char* path, char* alias);
  * @return int The success result
  */
 int aipm_remove(char* alias);
+
+/**
+ * @brief Check the repo for a new version, and auto-upgrade the current version of aipm
+ *
+ * @return int The success result
+ */
+int aipm_upgrade();
 
 #endif

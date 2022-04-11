@@ -34,6 +34,7 @@ struct aipm_flags processFlags(char* mode)
     flags.remove = strcmp(mode, "remove") == 0;
     flags.install = strcmp(mode, "install") == 0;
     flags.update = strcmp(mode, "update") == 0;
+    flags.upgrade = strcmp(mode, "upgrade") == 0;
 
     return flags;
 }
@@ -102,6 +103,10 @@ int main(int argc, char** argv)
             list();
             result = EXIT_SUCCESS;
         }
+	else if (flags.upgrade)
+	{
+	    aipm_upgrade();
+	}
         else if (argc >= 3)
         {
             if (flags.update || flags.remove || flags.install)

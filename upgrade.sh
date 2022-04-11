@@ -7,9 +7,6 @@
 # in, then run it through `./upgrade.sh`.
 #
 # Author: Logan Savage
-# Version 0.3.0
-# Date: 2022-03-08
-# Copyright (c) 2022 Logan Savage. Some Rights Reserved. See LICENSE.
 #
 
 if ! command -v aipm; then

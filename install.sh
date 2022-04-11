@@ -28,6 +28,9 @@ if [ ! -d ~/.local ]; then mkdir ~/.local; fi
 if [ ! -d ~/.local/aipm ]; then mkdir ~/.local/aipm; fi
 if [ ! -d ~/.local/aipm/bin ]; then mkdir ~/.local/aipm/bin; fi
 
+# Install updater
+cp ./updater.sh ~/.local/aipm/updater.sh
+
 # Compile executable
 make
 cp ./bin/aipm ~/.local/aipm/aipm

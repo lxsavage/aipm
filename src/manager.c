@@ -51,3 +51,9 @@ int aipm_remove(char* alias)
     aipm_fs_rm(alias);
     return EXIT_SUCCESS;
 }
+
+int aipm_upgrade()
+{
+	system("$HOME/.local/aipm/updater.sh");
+	return EXIT_SUCCESS;
+}

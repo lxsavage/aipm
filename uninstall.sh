@@ -23,12 +23,12 @@ sudo rm -rf /usr/bin/aipm
 # Remove image directory, store recovered images in Documents
 cp ~/.local/aipm/bin ~/Documents/AIPM_Images
 
-# Remove executable
-rm -rf ~/.local/aipm
-
 # Remove manpage
 sudo rm -rf /usr/local/share/man/man1/aipm.*
 sudo mandb
+
+# Remove installation
+rm -rf ~/.local/aipm
 
 # Success message
 echo "Uninstallation complete!"
