@@ -1,0 +1,30 @@
+.TH "AIPM" "1" "April 2022" "aipm 0.3.0" ""
+
+.SH NAME
+.B aipm
+- a package manager for AppImages
+
+.SH SYNOPSIS
+.B aipm
+<command> [<args>]
+
+.SH DESCRIPTION
+.B aipm
+is a basic package manager written to install/remove AppImages. These images are installed with a name, which will be accessible from the command line.
+
+.SH COMMANDS
+.TP
+.B help
+displays a quick message over usage. This command is automatically executed when an invalid command name is passed in, or none is passed in.
+
+.TP
+\f[B]install\f[R] <path> <name>
+takes a path (must be a full path starting at /) to an AppImage, and installs it with the given name and removes the initial AppImage. The AppImage can be accessed by using the given name as a command.
+
+.TP
+\f[B]update\f[R] <path> <name>
+takes a path (must be a full path starting at /) to an AppImage, and updates the specified AppImage by name in-place. It can be continued to be accessed by this alias as a command.
+
+.TP
+\f[B]remove\f[R] <name>
+takes the name of a previously-installed AppImage, and uninstalls it, freeing the name for another command.
