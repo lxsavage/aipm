@@ -14,6 +14,8 @@ In order to build this program, the following programs are required to be instal
 
 ## Updating
 
+###### NEW (0.4.0): Run `aipm upgrade`
+
 1. Clone new version repo
 2. cd into the root of the new repo.
 3. Run `sh ./update.sh`
