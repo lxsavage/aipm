@@ -1,4 +1,4 @@
-# aipm
+# aipm: AppImage Package Manager
 A basic package manager written to install/remove AppImages. These images are installed with a name which can be accessed from the command line.
 
 ## Installation
