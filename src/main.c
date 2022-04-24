@@ -103,10 +103,10 @@ int main(int argc, char** argv)
             list();
             result = EXIT_SUCCESS;
         }
-	else if (flags.upgrade)
-	{
-	    aipm_upgrade();
-	}
+        else if (flags.upgrade)
+        {
+            aipm_upgrade();
+        }
         else if (argc >= 3)
         {
             if (flags.update || flags.remove || flags.install)
