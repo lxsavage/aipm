@@ -1,27 +1,24 @@
-#
 # Makefile for aipm.
-#
 # Author: Logan Savage
-#
 
 ###############################################################################
 
 # Name of the outputted binary
-TARGET			= bin/aipm
+TARGET	= bin/aipm
 
 # Compiler
 CC				= gcc
-CC_FLAGS		= -pedantic -Wimplicit-function-declaration -Wreturn-type -O2 -c
+CC_FLAGS	= -pedantic -Wimplicit-function-declaration -Wreturn-type -O2 -c
 
 # Linker
-LINKER			= gcc
+LINKER				= gcc
 LINKER_FLAGS	=
 
 # Get a list of the source files, header files, and object files for the
 # compilation process
-SOURCES			= $(wildcard src/*.c)
-HEADERS			= $(wildcard src/*.h)
-OBJECTS			= $(SOURCES:src/%.c=obj/%.o)
+SOURCES	= $(wildcard src/*.c)
+HEADERS	= $(wildcard src/*.h)
+OBJECTS	= $(SOURCES:src/%.c=obj/%.o)
 
 ###############################################################################
 

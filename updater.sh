@@ -1,6 +1,7 @@
 #!/bin/sh
 
-set _curr_cd="$(pwd)"
+set _curr_cd=$PWD
+
 # Git clone the current version of the repo to a temp directory
 echo "Fetching newest version..."
 cd $HOME

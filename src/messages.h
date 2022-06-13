@@ -9,7 +9,7 @@
 #define MESSAGES_H_INCLUDED
 
 #define MSG_SPLASH                                                             \
-    "AIPM: AppImage Package Manager v0.4.0\nCreated by Logan Savage\n"
+    "AIPM: AppImage Package Manager v0.4.1\nCreated by Logan Savage\n"
 
 #define MSG_INSTALL "Installing AppImage..."
 #define MSG_UPDATE "Updating AppImage..."

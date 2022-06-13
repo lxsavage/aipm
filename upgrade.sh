@@ -1,13 +1,7 @@
 #!/bin/sh
 
-#
-# upgrade.sh
-#
 # To use this script, cd into the directory this file is contained
 # in, then run it through `./upgrade.sh`.
-#
-# Author: Logan Savage
-#
 
 if ! command -v aipm; then
     sh install.sh
@@ -20,8 +14,8 @@ if [ ! -d src ]; then
 fi
 
 echo "Updating..."
+cp ./version $HOME/.local/aipm/version
 
 make
-mv -f ./bin/aipm ~/.local/aipm/aipm
-
+mv -f ./bin/aipm $HOME/.local/aipm/aipm
 echo "Done!"

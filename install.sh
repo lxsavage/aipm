@@ -1,14 +1,7 @@
 #!/bin/sh
 
-#
-# install.sh
-#
 # To use this script, cd into the directory that this file is contained in,
 # then run this file with `./install.sh`.
-#
-# Author: Logan Savage
-# Copyright (c) 2022 Logan Savage. Some Rights Reserved. See LICENSE.
-#
 
 if command -v aipm; then
     sh upgrade.sh
@@ -16,7 +9,7 @@ if command -v aipm; then
 fi
 
 NEWPATH='export PATH="$PATH:$HOME/.local/aipm/bin"'
-echo "Installing aipm to ~/.local/aipm/aipm; symlinking to /usr/bin/aipm"
+echo "Installing aipm to $HOME/.local/aipm/aipm; symlinking to /usr/bin/aipm"
 
 if [ ! -d src ]; then
     echo "Make sure that you are cd'd into the aipm directory"
@@ -24,19 +17,20 @@ if [ ! -d src ]; then
 fi
 
 # Create required directories
-if [ ! -d ~/.local ]; then mkdir ~/.local; fi
-if [ ! -d ~/.local/aipm ]; then mkdir ~/.local/aipm; fi
-if [ ! -d ~/.local/aipm/bin ]; then mkdir ~/.local/aipm/bin; fi
+if [ ! -d $HOME/.local ]; then mkdir $HOME/.local; fi
+if [ ! -d $HOME/.local/aipm ]; then mkdir $HOME/.local/aipm; fi
+if [ ! -d $HOME/.local/aipm/bin ]; then mkdir $HOME/.local/aipm/bin; fi
 
 # Install updater
-cp ./updater.sh ~/.local/aipm/updater.sh
+cp ./updater.sh $HOME/.local/aipm/updater.sh
+cp ./version $HOME/.local/aipm/version
 
 # Compile executable
 make
-cp ./bin/aipm ~/.local/aipm/aipm
+cp ./bin/aipm $HOME/.local/aipm/aipm
 
 # Symlink
-sudo ln -s ~/.local/aipm/aipm /usr/bin/aipm
+sudo ln -s $HOME/.local/aipm/aipm /usr/bin/aipm
 
 # Install manpage
 if [ ! -d /usr/local/share/man/man1 ]; then
@@ -47,8 +41,8 @@ sudo cp doc/aipm.manpage /usr/local/share/man/man1/aipm.1
 sudo gzip /usr/local/share/man/man1/aipm.1
 sudo mandb
 
-# Add ~/.local/aipm/bin to PATH
-echo $NEWPATH >> ~/.bashrc
-echo $NEWPATH >> ~/.zshrc
+# Add $HOME/.local/aipm/bin to PATH
+echo $NEWPATH >> $HOME/.bashrc
+echo $NEWPATH >> $HOME/.zshrc
 
 echo "Done! Invoke with aipm."
