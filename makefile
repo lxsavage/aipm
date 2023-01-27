@@ -4,15 +4,15 @@
 ###############################################################################
 
 # Name of the outputted binary
-TARGET	= bin/aipm
+TARGET = bin/aipm
 
 # Compiler
-CC				= gcc
-CC_FLAGS	= -pedantic -Wimplicit-function-declaration -Wreturn-type -O2 -c
+CC       = gcc
+CC_FLAGS = -pedantic -Wimplicit-function-declaration -Wreturn-type -O2 -c
 
 # Linker
-LINKER				= gcc
-LINKER_FLAGS	=
+LINKER       = gcc
+LINKER_FLAGS =
 
 # Get a list of the source files, header files, and object files for the
 # compilation process
@@ -45,11 +45,11 @@ obj/%.o: src/%.c
 ##############################################################################
 
 # Shell script aliases
-install: install.sh
+install: build install.sh
 	./install.sh
 
 uninstall: uninstall.sh
 	./uninstall.sh
 
-upgrade: upgrade.sh
+upgrade: build upgrade.sh
 	./upgrade.sh

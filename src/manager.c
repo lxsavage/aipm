@@ -52,6 +52,7 @@ int aipm_remove(char* alias)
     return EXIT_SUCCESS;
 }
 
+/* TODO - Switch to updater program, as to avoid introduced security vulnerabilities */
 int aipm_upgrade()
 {
 	system("$HOME/.local/aipm/updater.sh");
